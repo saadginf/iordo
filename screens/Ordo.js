@@ -2,26 +2,37 @@ import React from "react";
 import { Image, StyleSheet, FlatList, View } from "react-native";
 import AppText from "../components/AppText";
 import colors from "../config/colors";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const Ordo = ({ route }) => {
+const Ordo = ({ route, navigation }) => {
   const ref = route.params;
   return (
     <View style={styles.container}>
-      <View style={styles.imgContainer}>
-        <Image style={styles.img} source={require("../assets/Ordo.png")} />
+      <View style={styles.header}>
+        <MaterialIcons
+          name="arrow-back-ios"
+          size={50}
+          color="white"
+          onPress={() => navigation.navigate("Pato")}
+        />
+        <AppText style={styles.headerTitle}>{ref.name}</AppText>
+        <MaterialIcons
+          name="add-comment"
+          size={50}
+          color="white"
+          onPress={() => navigation.navigate("emailUs")}
+        />
       </View>
       <View style={styles.ordo}>
-        <View style={styles.ordoText}>
-          <AppText style={styles.ordoTitle}>Ordonnance: {ref.name}</AppText>
+        <AppText style={styles.ordoTitle}>Ordonnance:</AppText>
 
-          <FlatList
-            data={ref.ordo}
-            keyExtractor={(d) => d}
-            renderItem={({ item }) => (
-              <AppText style={styles.ordoItem}>{item}</AppText>
-            )}
-          />
-        </View>
+        <FlatList
+          data={ref.ordo}
+          keyExtractor={(d) => d}
+          renderItem={({ item }) => (
+            <AppText style={styles.ordoItem}>{item}</AppText>
+          )}
+        />
       </View>
     </View>
   );
@@ -33,36 +44,42 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  imgContainer: {},
-  img: {
-    height: 300,
-    width: "100%",
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+  header: {
+    height: 150,
+
+    backgroundColor: colors.primary,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    alignItems: "center",
   },
+  headerTitle: {
+    fontSize: 30,
+    color: colors.white,
+    fontWeight: "bold",
+  },
+
   ordo: {
     flex: 1,
-    marginTop: -30,
     alignItems: "center",
     paddingTop: 5,
     paddingHorizontal: 20,
+
+    marginTop: -30,
+    borderTopLeftRadius: 35,
+    borderTopEndRadius: 35,
+    backgroundColor: colors.light,
   },
-  ordoText: {
-    width: "100%",
-    height: "90%",
-    backgroundColor: colors.primary,
-    paddingHorizontal: 10,
-    borderRadius: 15,
-  },
+
   ordoTitle: {
-    color: colors.white,
+    color: colors.black,
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 25,
     padding: 10,
   },
   ordoItem: {
-    color: colors.white,
+    color: colors.black,
     marginTop: 5,
   },
 });

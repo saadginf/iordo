@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontSize: 19,
+    marginTop: 10,
   },
   logo: {
     height: 150,
