@@ -6,7 +6,7 @@ import colors from "../config/colors";
 
 function EmailUsButton({ onPress }) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={styles.containerover}>
       <View style={styles.container}>
         <FontAwesome name="send" color={colors.white} size={30} />
       </View>
@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: "center",
     width: 80,
+  },
+  containerover: {
+    marginTop: 10,
   },
 });
 

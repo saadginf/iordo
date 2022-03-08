@@ -28,6 +28,7 @@ const Ordo = ({ route, navigation }) => {
 
         <FlatList
           data={ref.ordo}
+          showsVerticalScrollIndicator={false}
           keyExtractor={(d) => d}
           renderItem={({ item }) => (
             <AppText style={styles.ordoItem}>{item}</AppText>
